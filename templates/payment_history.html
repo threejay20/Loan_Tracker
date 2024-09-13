@@ -1,0 +1,37 @@
+{% extends "layout.html" %} {% block title %} Payment History - Loan Tracker {%
+endblock %} {% block content %}
+<h1 class="text-center">Payment History for Loan ID: {{ loan[0] }}</h1>
+
+<h2>Loan Details</h2>
+<div class="card mb-4">
+  <div class="card-body">
+    <p><strong>Loan Amount:</strong> ${{ loan[1] }}</p>
+    <p><strong>Interest Rate:</strong> {{ loan[2] }}%</p>
+    <p><strong>Start Date:</strong> {{ loan[3] }}</p>
+    <p><strong>Remaining Balance:</strong> ${{ loan[5] }}</p>
+  </div>
+</div>
+
+<h2>Payment History</h2>
+<table class="table table-striped table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>Payment ID</th>
+      <th>Payment Date</th>
+      <th>Payment Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for payment in payments %}
+    <tr>
+      <td>{{ payment[0] }}</td>
+      <td>{{ payment[2] }}</td>
+      <td>${{ payment[3] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<br />
+<a href="/" class="btn btn-primary">Back to Loan List</a>
+{% endblock %}

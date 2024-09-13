@@ -1,0 +1,62 @@
+/* Custom styles for Loan Tracker */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f8f9fa; /* Light gray background */
+  color: #343a40; /* Dark text color */
+}
+
+.navbar {
+  background-color: #007bff; /* Custom navbar background */
+}
+
+.navbar-brand {
+  color: #ffffff !important; /* Navbar text color */
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff !important; /* Navbar link color */
+}
+
+.table {
+  background-color: #ffffff; /* White table background */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #e9ecef; /* Light gray for alternating rows */
+}
+
+.table th,
+.table td {
+  vertical-align: middle; /* Center-align text in table cells */
+}
+
+.card {
+  border: 1px solid #dee2e6; /* Border color */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.card-body {
+  background-color: #ffffff; /* White card background */
+  padding: 20px; /* Padding inside the card */
+}
+
+.btn-primary {
+  background-color: #28a745; /* Green background for primary button */
+  border-color: #28a745; /* Match button border with background */
+}
+
+.btn-primary:hover {
+  background-color: #218838; /* Darker green on hover */
+  border-color: #1e7e34; /* Darker border color on hover */
+}
+
+.btn-info {
+  background-color: #17a2b8; /* Info button color */
+  border-color: #17a2b8; /* Match button border with background */
+}
+
+.btn-info:hover {
+  background-color: #138496; /* Darker blue on hover */
+  border-color: #117a8b; /* Darker border color on hover */
+}

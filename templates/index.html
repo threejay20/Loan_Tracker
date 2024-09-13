@@ -1,0 +1,106 @@
+{% extends "layout.html" %} {% block title %} Loan Tracking System {% endblock
+%} {% block content %}
+<h1 class="text-center">Loan Tracking System</h1>
+
+<h2>Add a New Loan</h2>
+<form action="/add_loan" method="POST" class="form-inline">
+  <div class="form-group">
+    <label for="loan_amount">Loan Amount:</label>
+    <input
+      type="number"
+      id="loan_amount"
+      name="loan_amount"
+      class="form-control mx-2"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="interest_rate">Interest Rate (%):</label>
+    <input
+      type="number"
+      step="0.01"
+      id="interest_rate"
+      name="interest_rate"
+      class="form-control mx-2"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="start_date">Start Date:</label>
+    <input
+      type="date"
+      id="start_date"
+      name="start_date"
+      class="form-control mx-2"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="payment_schedule">Payment Schedule:</label>
+    <select
+      id="payment_schedule"
+      name="payment_schedule"
+      class="form-control mx-2"
+      required
+    >
+      <option value="monthly">Monthly</option>
+      <option value="weekly">Weekly</option>
+    </select>
+  </div>
+
+  <input type="submit" value="Add Loan" class="btn btn-primary" />
+</form>
+
+<h2 class="mt-5">Loan List</h2>
+<table class="table table-striped table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Amount</th>
+      <th>Interest Rate</th>
+      <th>Start Date</th>
+      <th>Remaining Balance</th>
+      <th>Action</th>
+      <th>History</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for loan in loans %}
+    <tr>
+      <td>{{ loan[0] }}</td>
+      <td>${{ loan[1] }}</td>
+      <td>{{ loan[2] }}%</td>
+      <td>{{ loan[3] }}</td>
+      <td>${{ loan[5] }}</td>
+      <td>
+        <form
+          action="/add_payment/{{ loan[0] }}"
+          method="POST"
+          class="form-inline"
+        >
+          <input
+            type="number"
+            name="payment_amount"
+            class="form-control"
+            required
+          />
+          <input
+            type="submit"
+            value="Add Payment"
+            class="btn btn-success ml-2"
+          />
+        </form>
+      </td>
+      <td>
+        <a href="/payment_history/{{ loan[0] }}" class="btn btn-info"
+          >View History</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
